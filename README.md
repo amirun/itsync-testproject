@@ -16,14 +16,20 @@ Execute any of these commands from the project root.
 
 ### Option 1: With Docker
 - Step 1:
-  >`mvn spring-boot:build-image -Dspring-boot.build-image.imageName=itsync/testproject`
+  ```shell
+  mvn spring-boot:build-image -Dspring-boot.build-image.imageName=itsync/testproject
+  ```
 - Step 2:
-  >`docker run -d -p 8080:8080 itsync/testproject`
+  ```shell
+  docker run -d -p 8080:8080 itsync/testproject
+  ```
 
 ### Option 2: Without Docker
 - Step 1:
-  >`mvn spring-boot:run`
-
+  ```shell
+  mvn spring-boot:run
+  ```
+  
 ---
 ### *NOTE*: A sample data set of 15 books is pre-populated for easier testing.
 
@@ -137,7 +143,8 @@ __POST `/books-api/getBooks`__
   ]
   ```
   
-- Filter books with more than 4 volumes/series : 
+- Filter books with more than 4 volumes/series :
+  Result is inclusive of the volume provided. 
 
   Request:
   ```json
@@ -151,9 +158,29 @@ __POST `/books-api/getBooks`__
       "name": "Hamlet",
       "author": "William Shakespeare",
       "genre": "Drama",
-      "description": "Hamlet, Prince of Denmark is faced by a ghost bearing a grim message of murder and revenge, driving the prince to the edge of madness by his struggle to understand the situation and to do his duty.",
+      "description": "Hamlet, Pr ... his duty.",
       "volumeCount": 5,
-      "createDate": "2023-06-06T19:33:28.413+00:00",
+      "createDate": "2023-06-06T20:44:57.192+00:00",
+      "type": "EBOOK"
+    },
+    {
+      "id": 6,
+      "name": "Romeo and Juliet",
+      "author": "William Shakespeare",
+      "genre": "Drama",
+      "description": "Offer ... and theater",
+      "volumeCount": 4,
+      "createDate": "2023-06-06T20:44:57.192+00:00",
+      "type": "PAPERBACK"
+    },
+    {
+      "id": 12,
+      "name": "Star Wars",
+      "author": "Timothy Zahn",
+      "genre": "Fiction",
+      "description": "Luke Skywalker is ... Emperors dirty work.",
+      "volumeCount": 4,
+      "createDate": "2023-06-06T20:44:57.192+00:00",
       "type": "EBOOK"
     }
   ]

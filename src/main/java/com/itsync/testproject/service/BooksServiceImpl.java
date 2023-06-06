@@ -92,8 +92,8 @@ public class BooksServiceImpl implements BooksService{
         Root<Book> root = query.from(Book.class);
 
         List<Predicate> predicateList = new ArrayList<>();
-        if(filter.getMinVolume() != null && filter.getMinVolume() >= 0) {
-            predicateList.add(criteriaBuilder.greaterThan(root.get("volumeCount"), filter.getMinVolume()));
+        if(filter.getMinVolume() != null && filter.getMinVolume() > 0) {
+            predicateList.add(criteriaBuilder.greaterThanOrEqualTo(root.get("volumeCount"), filter.getMinVolume()));
         }
         if(filter.getAuthor() != null) {
             predicateList.add(criteriaBuilder.equal(root.get("author"), filter.getAuthor()));
