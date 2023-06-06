@@ -51,6 +51,7 @@ public class BooksServiceImpl implements BooksService{
         book.setName(dto.name());
         book.setAuthor(dto.author());
         book.setGenre(dto.genre());
+        book.setDescription(dto.description());
         book.setVolumeCount(dto.volumeCount());
         book.setType(dto.type());
         Book updatedBook = repository.save(book);
@@ -114,6 +115,7 @@ public class BooksServiceImpl implements BooksService{
                 .name(dto.name())
                 .author(dto.author())
                 .genre(dto.genre())
+                .description(dto.description())
                 .volumeCount(dto.volumeCount())
                 .createDate(Timestamp.valueOf(LocalDateTime.now()))
                 .type(dto.type())
