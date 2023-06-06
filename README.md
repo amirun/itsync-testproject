@@ -10,7 +10,7 @@ Test project for ITSYNC
 * Docker - service should be running locally for build
 
 ---
-## Build and Test
+# Build and Test
 
 Execute any of these commands from the project root.
 
@@ -35,12 +35,12 @@ Execute any of these commands from the project root.
 
 ---
 
-#### URLs:
+# URLs:
 You can visit below URLs to test the application.
 - Swagger-UI : http://localhost:8080/swagger-ui/index.html#/
 - Actuator   : http://localhost:8080/actuator
 
-### API Guide:
+# API Guide:
 __POST `/books-api`__
 
 Sample Request:
