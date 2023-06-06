@@ -2,15 +2,15 @@
 Test project for ITSYNC
 
 ---
-#Software Dependencies
+# Software Dependencies
 * Java 17
 * Spring Boot 3.1.0
-* Swagger for API DDocumentation [Open API 3]
+* Swagger for API Documentation [Open API 3]
 * Flyway for DB versioning
 * Docker - service should be running locally for build
 
 ---
-##Build and Test
+## Build and Test
 
 Execute any of these commands from the project root.
 
@@ -24,14 +24,17 @@ Execute any of these commands from the project root.
 - Step 1:
   >`mvn spring-boot:run`
 
-###*NOTE*: A sample data set of 15 books is pre-populated for easier testing.
+---
+### *NOTE*: A sample data set of 15 books is pre-populated for easier testing.
 
-####URLs:
+---
+
+#### URLs:
 You can visit below URLs to test the application.
 - Swagger-UI : http://localhost:8080/swagger-ui/index.html#/
 - Actuator   : http://localhost:8080/actuator
 
-###API Guide:
+### API Guide:
 __POST `/books-api`__
 
 Sample Request:
@@ -220,6 +223,48 @@ __POST `/books-api/getBooks`__
       "volumeCount": 3,
       "createDate": "2023-06-06T19:33:28.413+00:00",
       "type": "HARDCOVER"
+    }
+  ]
+  ```
+- Get all, no filters applied :
+
+  Request:
+  ```json
+  { }
+  ```
+  Response:
+  ```json
+  [
+    {
+      "id": 1,
+      "name": "Gilead",
+      "author": "Marilynne Robinson",
+      "genre": "Fiction",
+      "description": "A ... readers alike.",
+      "volumeCount": 1,
+      "createDate": "2023-06-06T19:33:28.413+00:00",
+      "type": "EBOOK"
+    },
+    {
+      "id": 2,
+      "name": "The Sonnets",
+      "author": "William Shakespeare",
+      "genre": "Drama",
+      "description": "Pres ... etime.",
+      "volumeCount": 2,
+      "createDate": "2023-06-06T19:33:28.413+00:00",
+      "type": "EBOOK"
+    },
+    ...
+    {
+      "id": 15,
+      "name": "Riddle-master",
+      "author": "Patricia A. McKillip",
+      "genre": "Fiction",
+      "description": "A col ... iginal.",
+      "volumeCount": 3,
+      "createDate": "2023-06-06T19:33:28.413+00:00",
+      "type": "EBOOK"
     }
   ]
   ```

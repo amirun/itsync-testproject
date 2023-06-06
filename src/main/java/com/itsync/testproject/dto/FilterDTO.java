@@ -1,5 +1,5 @@
 package com.itsync.testproject.dto;
-import jakarta.validation.constraints.NotEmpty;
+
 import lombok.*;
 
 import java.io.Serializable;

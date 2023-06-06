@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -28,7 +27,7 @@ public class BooksServiceImpl implements BooksService{
     private final BooksRepository repository;
     private final EntityManager entityManager;
 
-    private Logger logger = LoggerFactory.getLogger(BooksServiceImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(BooksServiceImpl.class);
 
     @Override
     public Book createBook(BooksDTO dto) {
@@ -66,7 +65,7 @@ public class BooksServiceImpl implements BooksService{
         try {
             repository.deleteById(bookId);
         } catch (Exception e) {
-            logger.info("delete failefor book with id: {}", bookId);
+            logger.info("delete failed for book with id: {}", bookId);
             return false;
         }
         logger.info("deleted book with id: {}", bookId);
@@ -77,7 +76,6 @@ public class BooksServiceImpl implements BooksService{
     public List<Book> getBooks(FilterDTO dto) {
         logger.info("filtering books based on filters: {}", dto);
         List<Book> result = getFilteredList(dto);
-        //List<Book> result = Arrays.asList(repository.findById(dto.getMinVolume()).orElseThrow(Exception::new));
 
         if(result.isEmpty()) {
             logger.error("No Books found matching your filters");

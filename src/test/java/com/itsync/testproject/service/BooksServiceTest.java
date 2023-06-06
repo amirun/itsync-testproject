@@ -5,17 +5,12 @@ import com.itsync.testproject.dto.FilterDTO;
 import com.itsync.testproject.model.Book;
 import com.itsync.testproject.model.TypeEnum;
 import com.itsync.testproject.repo.BooksRepository;
-import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.slf4j.Logger;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -31,25 +26,11 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class BooksServiceUnitTest {
 
-    private MockMvc mockMvc;
-
     @InjectMocks
     private BooksServiceImpl service;
 
     @Mock
     private BooksRepository repo;
-
-    @Mock
-    private EntityManager manager;
-
-    @Mock
-    private Logger logger;
-
-
-    @BeforeEach
-    void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(service).build();
-    }
 
     @Test
     void createBook() {
@@ -66,7 +47,6 @@ class BooksServiceUnitTest {
         Book book = getBook();
         when(repo.findById(anyInt())).thenReturn(Optional.of(book));
         when(repo.save(any(Book.class))).thenReturn(book);
-        //when(repo.findById(anyInt())).thenReturn(java.util.Optional.ofNullable(null));
         Book result = service.updateBook(1, getDTO());
         Assertions.assertEquals(book.getAuthor(), result.getAuthor());
         Assertions.assertEquals(book.getGenre(), result.getGenre());
@@ -75,7 +55,6 @@ class BooksServiceUnitTest {
 
     @Test
     void updateBook_Exception() {
-        Book book = getBook();
         when(repo.findById(anyInt())).thenReturn(Optional.empty());
         Exception exception = assertThrows(Exception.class, () -> service.updateBook(1, getDTO()));
         assertEquals("Unable to find book for provided id", exception.getMessage());
