@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.itsync</groupId>
-    <artifactId>testproject</artifactId>
+    <artifactId>testProject</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>testproject</name>
+    <name>testProject</name>
     <description>test project for itsync</description>
     <properties>
         <java.version>17</java.version>
